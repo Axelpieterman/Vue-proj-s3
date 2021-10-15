@@ -24,7 +24,7 @@ export default {
     <SidebarLink to="/store" icon="fas fa-store">Store</SidebarLink>
     <SidebarLink to="/sign-up" icon="fas fa-user-plus">Sign-up</SidebarLink>
     <SidebarLink to="/login" icon="fas fa-sign-in-alt">Sign-in</SidebarLink>
-    <SidebarLink to="/image" icon="fas fa-image">Images</SidebarLink>
+    <SidebarLink to="/weapon" icon="fas fa-image">Weapons</SidebarLink>
 
     <span
       class="collapse-icon"

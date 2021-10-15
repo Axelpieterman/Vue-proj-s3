@@ -4,12 +4,18 @@ import About from '../views/About.vue'
 import Signup from '../views/SignupForm.vue'
 import Store from '../views/StoreOverview.vue'
 import Login from '../views/Login.vue'
+import Weapon from '../views/Weapon.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/weapon',
+    name: 'Weapon',
+    component: Weapon
   },
   {
     path: '/about',
