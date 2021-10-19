@@ -12,12 +12,13 @@
                     Brand
                 </th>
             </tr>
+        </thead>
              
             <tbody>
                 <tr v-for="weapon in weapons" :key="weapon">
-                    <td>{{weapon.WeaponId}}</td>
-                    <td>{{weapon.WeaponName}}</td>
-                    <td>{{weapon.WeaponBrand}}</td>
+                    <td>{{weapon.ID}}</td>
+                    <td>{{weapon.name}}</td>
+                    <td>{{weapon.brand}}</td>
                    <td>
                        <button type="button"
                        class="btn btn-light mr-1">
@@ -25,13 +26,16 @@
                    </td>
                 </tr>
             </tbody>
-        </thead>
+        
     </table>
     
 </template>
 
 
 <script>
+import variables from '../config/variable.js'
+import axios from 'axios'
+
 export default {
     data (){
         return{
@@ -41,10 +45,11 @@ export default {
 
 methods: {
     refreshData(){
-        axios.get(variables.API_URL+"weapon")
+        const API_URL = "https://localhost:44314/api/"
+        axios.get(API_URL + "Weapon")
         .then((response)=>{
             this.weapons=response.data;
-        });
+        })        
     }
 },
 mounted:function(){
