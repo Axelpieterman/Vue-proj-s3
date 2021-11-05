@@ -2,8 +2,8 @@
     
  <div class="container">
   <div class="row">
-    <div class="col"  v-for="weapon in weapons" :key="weapon">                         
-           <storecard :article="weapon" />
+    <div class="col"  v-for="gear in gear" :key="gear">                         
+           <storecard :article="gear" />
     </div>
     </div>
 </div>
@@ -12,30 +12,24 @@
 <script>
 import variables from '../config/variable.js'
 import axios from 'axios'
-import storecard from '../views/StoreCard.vue'
+import storecard from './StoreCard.vue'
 
 export default{
               components:{
      storecard,
     },
      data(){
-         return{
-            guns:  [
-            {name: 'AR-15', brand: 'ArmaLite', url: 'https://www.youtube.com/watch?v=BSizVpfqFtw', img: "https://usercontent.one/wp/www.mikpunt.store/wp-content/uploads/2021/03/6171C5E4-A20A-4836-8770-B298D142E4A8-600x200.png", isFav: true},
-            {name: 'HK-416', brand: 'Hecklor & Koch', url: 'https://www.youtube.com/watch?v=pbImvaiXGFU', img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/HK416N.png/1200px-HK416N.png", isFav: false},
-            {name: 'Scar-L', brand: 'FNH USA', url: 'https://www.youtube.com/watch?v=DAUIi05Rckc', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/FN_SCAR-L_noBG.png/1200px-FN_SCAR-L_noBG.png', isFav: true},
-            {name: 'Scar-L', brand: 'FNH USA', url: 'https://www.youtube.com/watch?v=DAUIi05Rckc', img: 'https://www.heckler-koch.com/uploads/tx_z7productshk/UMP9_re_SG.png', isFav: true}
-            ],
-            weapons: [],   
+         return{           
+            gear: [],  
          }    
     },
    
   methods: {
     refreshData(){
         const API_URL = "https://localhost:44314/api/"
-        axios.get(API_URL + "Weapon")
+        axios.get(API_URL + "Gear")
         .then((response)=>{
-            this.weapons=response.data;
+            this.gear=response.data;
         })        
     }
 },

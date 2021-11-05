@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="@/assets/ak47.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Welkom koop je gunnoe hier</h1>
   </div>
 </template>
 
@@ -16,3 +16,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+h1{
+  color: chartreuse;
+}
+</style>
