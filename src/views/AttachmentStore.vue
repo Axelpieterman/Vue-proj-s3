@@ -3,7 +3,7 @@
  <div class="container">
   <div class="row">
     <div class="col"  v-for="attachment in attachments" :key="attachment">                         
-           <storecard :article="attachments" />
+           <storecard :article="attachment" />
     </div>
     </div>
 </div>
