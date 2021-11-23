@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import variables from '../config/variable.js'
+
 import axios from 'axios'
 import storecard from './StoreCard.vue'
 
@@ -25,9 +25,8 @@ export default{
     },
    
   methods: {
-    refreshData(){
-        const API_URL = "https://localhost:44314/api/"
-        axios.get(API_URL + "Gear")
+    refreshData(){   
+        axios.get("Gear")
         .then((response)=>{
             this.gear=response.data;
         })        

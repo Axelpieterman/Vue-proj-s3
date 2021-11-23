@@ -8,12 +8,18 @@ import GearStore from '../views/GearStore.vue'
 import AttachmentStore from '../views/AttachmentStore.vue'
 import Weapon from '../views/Weapon.vue'
 import AddArticle from '../views/AddArticle.vue'
+import ArticleDetail from '../views/ArticleDetail.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/weapon/detail/:id',
+    name: 'ArticleDetail',
+    component: ArticleDetail
   },
   {
     path: '/weapon',

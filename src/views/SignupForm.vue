@@ -1,5 +1,6 @@
 <template>
-    <form @submit.prevent="handleSubmit">
+    <form  @submit.prevent="handleSubmit">
+        <div v-if="!accountcreated">
         <h3>Sign-up</h3>
         <label>Email address*</label>
         <input type="email" required v-model="email">
@@ -7,10 +8,6 @@
          <label>Password*</label>
         <input type="password" required v-model="password">
         <div v-if="passwordError" class="error">{{ passwordError }}</div>
-       
-     
-        <label>Country*</label>
-        <input type="country" required v-model="country">
         
         <label>City*</label>
         <input type="city" required v-model="city">
@@ -25,14 +22,17 @@
             <input type="checkbox" required v-model="terms">
             <label>Accept terms and conditions*</label>
         </div>
-        <div class="terms">
+        <div class="newsletter">
             <input type="checkbox">
             <label>Sign-up for the newsletter</label>
         </div>
-        <button v-if="fade"  @mouseover="fadeEvent" @click="createAccount">Create Account</button>
-        <button v-else @mouseleave="fadeEvent" @click="createAccount" class="createAccMover">Create Account</button>
+        <button class="btn btn-secondary">Create Account</button>
         <br>
         <p class="smallLetters">* Required fields</p>
+        </div>
+        <div v-else>
+            <h3>You've succesfully created an account!</h3>
+        </div>
     </form>
 </template>
 
@@ -45,20 +45,17 @@ export default {
             email: '',
             password: '',
             passwordError: '',
-            country: '',
             city: '',
             postalCode: '',
             address: '',
             fade: true,
-            terms: false,        
+            terms: false,  
+            accountcreated: false,      
         }
     },
     methods:{
         createAccount(){
 
-        },
-        fadeEvent(){
-            this.fade = !this.fade;
         },
         handleSubmit(){
            this.passwordError = this.password.length > 5 ? 
@@ -69,6 +66,7 @@ export default {
                console.log('address:', this.address)
                console.log('city:', this.city)
                console.log('postalcode:', this.postalcode)
+               this.accountcreated = true;
            }
         }
     }
@@ -119,8 +117,9 @@ button{
      margin: 25px 0 15px;
      width: 100%;
      height: 40px;         
-     background: #b49d6b;
      font-weight: bold;
+     background: #AAAAAA;
+     color: black;
   
 }
 .createAccMover{     

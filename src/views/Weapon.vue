@@ -33,7 +33,7 @@
 
 
 <script>
-import variables from '../config/variable.js'
+
 import axios from 'axios'
 
 export default {

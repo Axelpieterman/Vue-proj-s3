@@ -45,7 +45,7 @@
         <label v-if="add === 'Weapon'">Video URL</label>
         <input v-if="add === 'Weapon'" type="string" required v-model="videoURL">
 
-         <button class="btn btn-success">Submit</button>
+         <button class="btn btn-secondary">Submit</button>
     </form>
 </template>
 
@@ -188,12 +188,13 @@ input[type="checkbox"]{
     top: 2px;
 }
 button{
-     display: block;
+      display: block;
      margin: 25px 0 15px;
      width: 100%;
      height: 40px;         
-     background: #b49d6b;
      font-weight: bold;
+     background: #AAAAAA;
+     color: black;
   
 }
 .createAccMover{     

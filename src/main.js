@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
+import './components/axios'
 
 import '@fortawesome/fontawesome-free/js/all'
 

@@ -11,8 +11,7 @@
             <input type="checkbox">
             <label>Remember me next time</label>
         </div>
-        <button v-if="fade"  @mouseover="fadeEvent" @click="createAccount">Create Account</button>
-        <button v-else @mouseleave="fadeEvent" @click="createAccount" class="createAccMover">Create Account</button>
+        <button class="btn btn-secondary">Login</button>
     </form>
 </template>
 
@@ -83,13 +82,13 @@ input[type="checkbox"]{
     top: 2px;
 }
 button{
-     display: block;
+      display: block;
      margin: 25px 0 15px;
      width: 100%;
      height: 40px;         
-     background: #e1d798;
      font-weight: bold;
-     border: none;
+     background: #AAAAAA;
+     color: black;
 }
 .createAccMover{     
      background: #FFA500;

@@ -6,7 +6,11 @@
                 <div class="card-body">
                     <h5 class="card-title">{{article.name}}</h5>
                     <p class="card-text">{{article.description}}</p>
-                    <a href="#" class="btn btn-dark">View article</a>
+                    <router-link
+                    :to="`/weapon/detail/${article.ID}`"
+                    >
+                    <button class="btn btn-dark">View article</button>
+                    </router-link>
                 </div>
             </div> 
 </template>

@@ -1,18 +1,21 @@
 <script>
 import Sidebar from '@/components/sidebar/Sidebar'
+import Advert from '@/components/Advertisment'
 import { sidebarWidth } from '@/components/sidebar/state'
 export default {
-  components: { Sidebar },
+  components: { Sidebar, Advert },
   setup() {
     return { sidebarWidth }
   }
 }
 </script>
 <template>
+
   <Sidebar />
-  <div :style="{ 'margin-left': sidebarWidth }">
+  <div :style="{ 'margin-left': sidebarWidth }"><Advert />
     <router-view />
   </div>
+  
 </template>
 
 <style>

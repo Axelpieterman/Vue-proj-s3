@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import variables from '../config/variable.js'
+
 import axios from 'axios'
 import storecard from './StoreCard.vue'
 
@@ -26,8 +26,7 @@ export default{
    
   methods: {
     refreshData(){
-        const API_URL = "https://localhost:44314/api/"
-        axios.get(API_URL + "Attachment")
+        axios.get("Attachment")
         .then((response)=>{
             this.attachments=response.data;
         })        
