@@ -1,11 +1,13 @@
 <script>
 import SidebarLink from './SidebarLink'
+import SidebarButton from './SidebarButton'
 import { collapsed, toggleSidebar, sidebarWidth } from './state'
 
 export default {
   on: false,
   props: {},
-  components: { SidebarLink },
+  inject: ['auth'],
+  components: { SidebarLink, SidebarButton },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth }
   },
@@ -31,8 +33,10 @@ export default {
     <SidebarLink to="/gearstore" icon="fas fa-vest">Gear</SidebarLink>
     <SidebarLink to="/attachmentstore" icon="fas fa-plus-circle">Attachments</SidebarLink>
     <SidebarLink to="/sign-up" icon="fas fa-user-plus">Sign-up</SidebarLink>
-    <SidebarLink to="/login" icon="fas fa-sign-in-alt">Sign-in</SidebarLink>
-    <SidebarLink to="/addarticle" icon="fas fa-plus">Add article</SidebarLink>
+    <SidebarButton v-if="!auth.authenticated" v-on:click="auth.loginWithPopup()" icon="fas fa-sign-in-alt">Sign-in</SidebarButton>
+    <SidebarButton v-if="auth.authenticated" v-on:click="auth.logout()" icon="fas fa-sign-in-alt">Logout</SidebarButton>
+
+    <SidebarLink v-if="auth.authenticated" to="/addarticle" icon="fas fa-plus">Add article</SidebarLink>
 
     <span
       class="collapse-icon"

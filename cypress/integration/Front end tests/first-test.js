@@ -4,7 +4,7 @@ describe('Verify Browser Stack Home Page', () => {
 
         it('Test home page', () => {
     
-           cy.visit('http://localhost:8083');
+           cy.visit('http://localhost:8081');
 
            cy.get('.home > img')
 

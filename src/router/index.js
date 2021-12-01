@@ -3,12 +3,13 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Signup from '../views/SignupForm.vue'
 import WeaponStore from '../views/WeaponStore.vue'
-import Login from '../views/Login.vue'
 import GearStore from '../views/GearStore.vue'
 import AttachmentStore from '../views/AttachmentStore.vue'
 import Weapon from '../views/Weapon.vue'
 import AddArticle from '../views/AddArticle.vue'
+import EditArticle from '../views/EditArticle.vue'
 import ArticleDetail from '../views/ArticleDetail.vue'
+import { AuthenticationGuard } from "vue-auth0-plugin";
 
 const routes = [
   {
@@ -17,9 +18,20 @@ const routes = [
     component: Home
   },
   {
+    path: '/secure',
+    component: () => import(/* webpackChunkName: "secure" */ '@/views/Secure.vue'),
+    beforeEnter: [AuthenticationGuard],
+  }, 
+
+  {
     path: '/weapon/detail/:id',
     name: 'ArticleDetail',
     component: ArticleDetail
+  },
+  {
+    path: '/editarticle',
+    name: 'EditArticle',
+    component: EditArticle
   },
   {
     path: '/weapon',
@@ -40,11 +52,6 @@ const routes = [
     path: '/weaponstore',
     name: 'Weaponstore',
     component: WeaponStore
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
   },
   {
     path: '/gearstore',
