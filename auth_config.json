@@ -1,6 +1,6 @@
 {
     "domain": "dev-1845skc9.us.auth0.com",
     "clientId": "rf2wQ9AAcy5U32P0AvSrcSWBjliLQGZu",
-    "redirectUri": "http://localhost:8081/",
-    "returnTo": "http://localhost:8081/"
+    "redirectUri": "http://localhost:8080/",
+    "returnTo": "http://localhost:8080/"
   }

@@ -1,16 +1,44 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="@/assets/ak47.png">
-    <h1>Welkom koop je gunnoe hier</h1>
+  <div id="app">
+    <button
+      type="button"
+      class="btn"
+      @click="showModal"
+    >
+      Open Modal!
+    </button>
+
+    <Modal
+      v-show="isModalVisible"
+      header="hello"
+      @close="closeModal"
+    />
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Home',
-}
-</script>
+  import Modal from '@/components/Modal.vue';
 
+  export default {
+    name: 'App',
+    components: {
+      Modal,
+    },
+    data() {
+      return {
+        isModalVisible: false,
+      };
+    },
+    methods: {
+      showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      }
+    }
+  };
+</script>
 
 
 <style scoped>

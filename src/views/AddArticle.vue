@@ -1,5 +1,5 @@
 <template>
-    <form @submit="AddArticle">
+    <form @submit.prevent="AddArticle">
         <h3>Add {{add}}</h3>
 
         <label for="articles">What do you want to add?</label>
@@ -9,132 +9,83 @@
         <option value="Gear">Gear</option>
         <option value="Attachment">Attachment</option>
         </select>
-
+        <div v-if="add !== ''">
         <label>Name</label>
-        <input type="name" required v-model="name">
+        <input type="name" required v-model="article.name">
         <label>Description</label>
-        <input type="description" required v-model="description">
+        <input type="description" required v-model="article.description">
          <label>Model</label>
-        <input type="model" required v-model="model">
+        <input type="model" required v-model="article.model">
         <label>Brand</label>
-        <input type="brand" required v-model="brand">
+        <input type="brand" required v-model="article.brand">
         <label>Type</label>
-        <input type="type" required v-model="type">
+        <input type="type" required v-model="article.type">
         <label>Price in €</label>
-        <input type="price" required v-model="price">
-        <label v-if="add === 'Weapon'">Magsize</label>
-        <input v-if="add === 'Weapon'" type="magsize" required v-model="magSize">
-        <label v-if="add === 'Weapon'">Caliber</label>
-        <input v-if="add === 'Weapon'" type="caliber" required v-model="caliber">
-        <label>Stock</label>
-        <input type="stock" required v-model="stock">
-        <label v-if="add === 'Weapon'" >Firemode</label>
-        <input v-if="add === 'Weapon'" type="firemode" required v-model="fireMode">
-        <label v-if="add === 'Weapon'">Rounds per minute</label>
-        <input v-if="add === 'Weapon'" type="rpm" required v-model="rpm">
-        <label>Weight in grams</label>
-        <input type="weight" required v-model="weightInGram">
-        <label>Height in milimeters</label>
-        <input type="height" required v-model="heightInMm">
-        <label>Width in milimeters</label>
-        <input type="width" required v-model="widthInMm">
-        <label>Color</label>
-        <input type="string" required v-model="color">
-        <label>Image URL</label>
-        <input type="string" required v-model="imgURL">
-        <label v-if="add === 'Weapon'">Video URL</label>
-        <input v-if="add === 'Weapon'" type="string" required v-model="videoURL">
+        <input type="price" required v-model="article.price">
 
-         <button class="btn btn-secondary">Submit</button>
+        <div v-if="add === 'Weapon'">
+        <label>Magsize</label>
+        <input type="magsize" required v-model="article.magSize">
+        <label>Caliber</label>
+        <input type="caliber" required v-model="article.caliber">    
+        <label>Firemode</label>
+        <input type="firemode" required v-model="article.firemode">
+        <label>Rounds per minute</label>
+        <input type="rpm" required v-model="article.rpm">
+        </div>
+        
+        <label>Stock</label>
+        <input type="stock" required v-model="article.stock">
+        <label>Weight in grams</label>
+        <input type="weight" required v-model="article.weightInGram">
+        <label>Height in milimeters</label>
+        <input type="height" required v-model="article.heightInMm">
+        <label>Width in milimeters</label>
+        <input type="width" required v-model="article.widthInMm">
+        <label>Color</label>
+        <input type="string" required v-model="article.color">
+        <label>Image URL</label>
+        <input type="string" required v-model="article.imgURL">
+        <label v-if="add === 'Weapon'">Video URL</label>
+        <input v-if="add === 'Weapon'" type="string" required v-model="article.videoURL">
+
+        <button class="btn btn-secondary">Submit</button>
+        </div>
     </form>
 </template>
 
 <script>
 
 import axios from 'axios'
-import storecard from './StoreCard.vue'
+
 
 export default{
-              components:{
-     storecard,
-    },
      data(){
-         return{           
-  add: 'Weapon', 
-  API: '',
-  WhatToAdd: 'AddWeapon',
-  name: '',
-  description: '',
-  model: '',
-  brand: '',
-  type: '',
-  price: 0,
-  magSize: 0,
-  caliber: 0,
-  stock: 0,
-  fireMode: '',
-  rpm: 0,
-  weightInGram: 0,
-  heightInMm: 0,
-  widthInMm: 0,
-  color: '',
-  imgURL: '',
-  videoURL: '', 
-         }    
+        return {   
+            article: {},
+            add: '',
+        }    
     },
    
   methods: {
-    AddArticle(e){
+    AddArticle(){
+        const vars = JSON.stringify(this.article)
         if (this.add === 'Weapon'){
             this.API = 'https://localhost:44314/Weapon/Create';
+        }  
         
-            axios.post(this.API, {
-               
-                name: this.name,
-                description: this.description,
-                model: this.model,
-                brand: this.brand,
-                type: this.type,
-                price: this.price,
-                caliber: this.caliber,
-                stock: this.stock,
-                fireMode: this.fireMode,
-                rpm: this.rpm,
-                weightInGram: this.weightInGram,
-                heightInMm: this.heightInMm,
-                widthInMm: this.widthInMm,
-                color: this.color,
-                imgURL: this.imgURL,
-                videoURL: this.videoURL
-          })  
-        }
         else if (this.add === 'Gear'){
              this.API = 'https://localhost:44314/Gear/Create';
         }  
         else if (this.add === 'Attachment'){
              this.API = 'https://localhost:44314/Attachment/Create';
         }     
-        if(this.add !== 'Weapon'){
-              axios.post(this.API, {
-               
-                name: this.name,
-                description: this.description,
-                model: this.model,
-                brand: this.brand,
-                type: this.type,
-                price: this.price,              
-                stock: this.stock,
-                weightInGram: this.weightInGram,
-                heightInMm: this.heightInMm,
-                widthInMm: this.widthInMm,
-                color: this.color,
-                imgURL: this.imgURL,                
-          })  
-        }
-},
+         axios.post(this.API, vars, {
+            headers: {'Content-Type': 'application/json' }})        
+    },
     
-onchange(event){
-    this.add = event;
+onChange(){
+    this.article = {};  
 }
 }
 }

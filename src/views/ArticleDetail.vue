@@ -1,9 +1,10 @@
 <template>
+<div class="container">
     <div class="container-md mt-5">
         <div>
             <div>
                 <div class="row">
-                    <div class="col-md-5 col-sm-6 product-img border border-1 border-secondary bg-white rounded">
+                    <div class="col-md-5 col-sm-6 product-img border border-0 border-secondary bg-transparent rounded">
                         <img :src="weapon.imgURL" :alt="weapon.name" class="img-fluid">
                     </div>
                     <div class="col-md-7 col-sm-6 fs-5 d-flex flex-column justify-content-between align-items-start mb-md-0 mb-5 px-4">
@@ -14,7 +15,7 @@
                             <p class="my-2">
                                 Price:
                                 <span class="text-capitalize">
-                                    <i class="fas fa-dollar-sign"></i>
+                                    <i class="fas fa-euro-sign"></i>
                                     {{weapon.price}}
                                 </span>
                             </p>
@@ -35,6 +36,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </template>
 
@@ -72,4 +74,19 @@ mounted:function(){
 }
  
 </script>
+
+<style scoped>
+
+.container{
+     max-width: 95%;
+    margin: 30px auto;
+    background: #AAAAAA;
+    text-align: left;
+    padding: 40px;
+    border-radius: 10px;
+}
+i{
+    width: 500px;
+}
+</style>
 

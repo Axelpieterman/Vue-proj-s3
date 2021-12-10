@@ -19,6 +19,7 @@ export default{
         return{
         advTxt: null,
         socketOpen: false,
+        showAd: false,
         connection: null,
         }       
     },

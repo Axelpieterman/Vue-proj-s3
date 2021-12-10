@@ -8,6 +8,7 @@ import AttachmentStore from '../views/AttachmentStore.vue'
 import Weapon from '../views/Weapon.vue'
 import AddArticle from '../views/AddArticle.vue'
 import EditArticle from '../views/EditArticle.vue'
+import ArticleOverview from '../views/ArticleOverview.vue'
 import ArticleDetail from '../views/ArticleDetail.vue'
 import { AuthenticationGuard } from "vue-auth0-plugin";
 
@@ -29,9 +30,14 @@ const routes = [
     component: ArticleDetail
   },
   {
-    path: '/editarticle',
+    path: '/edit/article/:id',
     name: 'EditArticle',
     component: EditArticle
+  },
+  {
+    path: '/articleoverview',
+    name: 'ArticleOverview',
+    component: ArticleOverview
   },
   {
     path: '/weapon',

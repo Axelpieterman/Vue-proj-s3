@@ -1,5 +1,5 @@
 <template>
-    
+    <Advert/>
  <div class="container">
   <div class="row">
     <div class="col"  v-for="weapon in weapons" :key="weapon">                         
@@ -13,10 +13,12 @@
 
 import axios from 'axios'
 import storecard from './StoreCard.vue'
+import Advert from '@/components/Advertisment'
 
 export default{
               components:{
      storecard,
+     Advert,
     },
      data(){
          return{
